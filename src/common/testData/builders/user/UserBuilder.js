@@ -1,36 +1,34 @@
 import { faker } from '@faker-js/faker';
+import { BaseBuilder } from '../BaseBuilder';
 
 export class User {
   constructor() {
     this.username = null;
     this.email = null;
     this.password = null;
+    this.token = null;
   }
 }
 
-export class UserBuilder {
-  constructor() {
-    this.reset();
-  }
-
+export class UserBuilder extends BaseBuilder {
   reset() {
-    this.user = new User();
+    this.product = new User();
   }
 
   setUsername(username = null) {
-    this.user.username = username ?? this.generateUsername();
+    this.product.username = username ?? this.generateUsername();
   }
 
   setEmail(email = null) {
-    this.user.email = email ?? this.generateEmail();
+    this.product.email = email ?? this.generateEmail();
   }
 
   setPassword(password = null) {
-    this.user.password = password ?? this.generatePassword();
+    this.product.password = password ?? this.generatePassword();
   }
 
-  getProduct() {
-    return this.user;
+  setToken(token) {
+    this.product.token = token;
   }
 
   generateFirstName() {

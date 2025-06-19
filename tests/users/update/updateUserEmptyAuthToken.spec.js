@@ -3,12 +3,12 @@ import { test } from '../../_fixtures/fixtures';
 test(`Update user with empty auth token`, async ({
   registeredUser,
   usersApi,
+  testDataDirector,
 }) => {
-  registeredUser['bio'] = 'Updated bio for the user.';
-  registeredUser['image'] = 'https://example.com/updateduser.jpg';
-  registeredUser['token'] = '';
+  const newProfile =
+    testDataDirector.profile.extendWithEmptyToken(registeredUser);
 
-  const response = await usersApi.updateUser(registeredUser);
+  const response = await usersApi.updateUser(newProfile);
 
   await usersApi.assertUnauthorizedResponseCode(response);
 });

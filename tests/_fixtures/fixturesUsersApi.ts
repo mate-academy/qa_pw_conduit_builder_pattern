@@ -1,12 +1,9 @@
 import { test as base } from '@playwright/test';
 import { request as apiRequest } from '@playwright/test';
 import { UsersApi } from '../../src/api/endpoints/UsersApi';
-import { TestDataDirector } from '../../src/common/testData/TestDataDirector';
 
 export const test = base.extend<{
   usersApi;
-  user;
-  users;
   registeredUser;
   registeredUsers;
   userRequests;
@@ -15,23 +12,6 @@ export const test = base.extend<{
     const client = new UsersApi(request);
 
     await use(client);
-  },
-  user: async ({}, use) => {
-    const director = new TestDataDirector();
-
-    const user = director.buildUser();
-
-    await use(user);
-  },
-  users: async ({ usersNumber }, use) => {
-    const users = Array(usersNumber);
-    const director = new TestDataDirector();
-
-    for (let i = 0; i < usersNumber; i++) {
-      users[i] = director.buildUser();
-    }
-
-    await use(users);
   },
   registeredUser: async ({ usersApi, user }, use) => {
     const response = await usersApi.registerNewUser(user);

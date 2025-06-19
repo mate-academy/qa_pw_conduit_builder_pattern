@@ -1,12 +1,13 @@
 import { test } from '../../_fixtures/fixtures';
 
-test(`Update user with bio and image`, async ({
+test(`Update user profile with new all new fields`, async ({
   registeredUser,
   usersApi,
   testDataDirector,
 }) => {
-  const newProfile =
-    testDataDirector.profile.extendWithBioAndImage(registeredUser);
+  const newProfile = testDataDirector.profile.buildNewProfile(
+    registeredUser.token,
+  );
   const response = await usersApi.updateUser(newProfile);
 
   await usersApi.assertSuccessResponseCode(response);
