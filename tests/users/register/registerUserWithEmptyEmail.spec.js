@@ -1,12 +1,12 @@
 import { test } from '../../_fixtures/fixtures';
 import { INVALID_EMAIL_MESSAGE } from '../../../src/constants/authErrorMessages';
 
-test('Register user with empty email', async ({ usersApi, user }) => {
-  const response = await usersApi.registerNewUser({
-    email: '',
-    password: user.password,
-    username: user.username,
-  });
+test('Register user with empty email', async ({
+  usersApi,
+  testDataDirector,
+}) => {
+  const user = testDataDirector.user.buildWithEmptyEmail();
+  const response = await usersApi.registerNewUser(user);
 
   await usersApi.assertUnprocessableEntityResponseCode(response);
   await usersApi.assertErrorMessageInResponseBody(

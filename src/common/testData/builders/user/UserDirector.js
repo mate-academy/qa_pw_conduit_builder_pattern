@@ -16,4 +16,16 @@ export class UserDirector {
 
     return user;
   }
+
+  buildWithEmptyEmail() {
+    this.builder.reset();
+
+    this.builder.setUsername();
+    this.builder.setEmail('');
+    this.builder.setPassword();
+
+    const newUser = this.builder.getProduct();
+
+    return newUser;
+  }
 }

@@ -26,7 +26,31 @@ The full list of APIs is described in the [documentation](https://documenter.get
 
 ## Main Task
 
-1. 
+Part1:
+
+1. Create two new methods in the `UserDirector.js` class `buildWithEmptyPassword()` &  `buildWithEmptyUsername()`;
+2. Update the user registration tests to use just created methods:
+- `tests/users/register/registerUserWithEmptyPassword.spec.js`;
+- `tests/users/register/registerUserWithEmptyUsername.spec.js`;
+3. Pay attention to call the methods with the help of `testDataDirector` fixture. 
+4. Use test `tests/users/register/registerUserWithEmptyEmail.spec.js` as an example.
+5. Run all the tests and make sure they pass. Use npm scripts for executing tests against `stage` Conduit env. 
+
+Part2:
+
+5. Create `ArticleBuilder` and `ArticleDirector` classes in the new folder `./src/common/testData/builders/artcile`.
+6. Initialize  `ArticleDirector` instance within the `TestDataDirector` class.
+7. Update the articles tests to use builder & director for creating article objects.
+- `tests/articles/create/createArticleWIthEmptyBody.spec.js`;
+- `tests/articles/create/createArticleWIthEmptyTags.spec.js`;
+- `tests/articles/create/createArticleWIthEmptyTitle.spec.js`;
+- `tests/articles/create/createArticleWIthOneTag.spec.js`;
+- `tests/articles/create/createArticleWIthUnauthorizedUser.spec.js`;
+- `tests/articles/read/getArticleByAutorizedUser2.spec.js`;
+- `tests/articles/read/getArticleByUnautorizedUser.spec.js`;
+8. Remove method `src/common/testData/generateNewArticleData.js` from project.
+9. Run all the tests and make sure they pass. Use npm scripts for executing tests against `stage` Conduit env. 
+
 
 ## Task Reporting
 
