@@ -18,7 +18,7 @@ export const test = base.extend<
   contextsNumber: [1, { option: true }],
   logger: [
     async ({}, use) => {
-      const logger = new Logger('error');
+      const logger = new Logger(process.env.LOG_LEVEL);
 
       await use(logger);
     },
