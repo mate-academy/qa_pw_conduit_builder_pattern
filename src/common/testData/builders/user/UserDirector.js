@@ -28,4 +28,28 @@ export class UserDirector {
 
     return newUser;
   }
+
+  buildWithEmptyPassword() {
+    this.builder.reset();
+    
+    this.builder.setEmail();
+    this.builder.setPassword('');
+    this.builder.setUsername();
+
+    const newUser = this.builder.getProduct();
+
+    return newUser;
+  }
+
+  buildWithEmptyUsername() {
+    this.builder.reset();
+
+    this.builder.setEmail();
+    this.builder.setPassword();
+    this.builder.setUsername('');
+
+    const newUser = this.builder.getProduct();
+
+    return newUser;
+  }
 }
