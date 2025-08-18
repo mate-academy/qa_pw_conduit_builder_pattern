@@ -44,15 +44,6 @@ export class ArticleDirector {
   }
 
   buildWithEmptyTags() {
-    this.builder.reset();
-
-    this.builder.setArticleTitle();
-    this.builder.setArticleDescription();
-    this.builder.setArticleBody();
-    this.builder.setArticleTag('');
-
-    const newArticle = this.builder.getProduct();
-
-    return newArticle;
+    return this.builder.setArticleTags([]).build();
   }
 }
