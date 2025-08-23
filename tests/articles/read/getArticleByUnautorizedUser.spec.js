@@ -29,5 +29,5 @@ test(`Get an article by unauthorized user`, async ({
     article.description,
   );
   await articlesApi.assertArticleBodyHasCorrectValue(response, article.body);
-  await articlesApi.assertArticleTagsHasCorrectValue(response, article.tag);
+  await articlesApi.assertArticleTagsHasCorrectValue(response, article.tags);
 });

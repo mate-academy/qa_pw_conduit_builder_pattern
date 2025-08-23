@@ -3,7 +3,8 @@ import { EMPTY_USERNAME_MESSAGE } from '../../../src/constants/authErrorMessages
 
 test('Register user with empty username', async ({
   user,
-  testDataDirector
+  testDataDirector,
+  usersApi
 }) => {
   const user = testDataDirector.user.buildWithEmptyUsername();
   const response = await usersApi.registerNewUser(user);

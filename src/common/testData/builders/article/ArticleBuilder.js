@@ -6,7 +6,7 @@ export class Article {
     this.title = null;
     this.description = null;
     this.body = null;
-    this.tag = [];
+    this.tags = [];
   }
 }
 
@@ -28,7 +28,7 @@ export class ArticleBuilder extends BaseBuilder {
   }
 
   setTag(tag = null) {
-    this.article.tag = tag ?? this.generateBody(1);
+    this.article.tag = tag ?? this.generateTags(1);
   }
 
   generateTitle() {

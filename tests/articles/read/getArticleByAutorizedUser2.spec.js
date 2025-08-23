@@ -35,5 +35,5 @@ test(`Get an article created by user1 by authorized user 2`, async ({
     article.description,
   );
   await articlesApi.assertArticleBodyHasCorrectValue(response, article.body);
-  await articlesApi.assertArticleTagsHasCorrectValue(response, article.tag);
+  await articlesApi.assertArticleTagsHasCorrectValue(response, article.tags);
 });
