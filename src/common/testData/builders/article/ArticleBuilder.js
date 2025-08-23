@@ -27,8 +27,8 @@ export class ArticleBuilder extends BaseBuilder {
     this.article.body = body ?? this.generateBody();
   }
 
-  setTag(tag = null) {
-    this.article.tag = tag ?? this.generateTags(1);
+  setTag(tags = null) {
+    this.article.tags = tags ?? this.generateTags(1);
   }
 
   generateTitle() {
