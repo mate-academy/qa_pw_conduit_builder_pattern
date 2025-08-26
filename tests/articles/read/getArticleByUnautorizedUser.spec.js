@@ -4,7 +4,7 @@ let slug;
 let articleWithOneTag;
 
 test.beforeEach(async ({ registeredUser, articlesApi, testDataDirector }) => {
-  articleWithOneTag = testDataDirector.article.buildArticle(1);
+  articleWithOneTag = testDataDirector.article.buildWithOneTag();
   const response = await articlesApi.createArticle(
     articleWithOneTag,
     registeredUser.token,

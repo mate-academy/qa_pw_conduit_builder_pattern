@@ -15,16 +15,28 @@ export class ArticleBuilder extends BaseBuilder {
     this.product = new Article();
   }
 
-  setTitle(title = null) {
-    this.product.title = title ?? this.generateTitle();
+  setTitle(title) {
+    if (title === undefined) {
+      this.product.title = this.generateTitle();
+    } else {
+      this.product.title = title;
+    }
   }
 
-  setDescription(description = null) {
-    this.product.description = description ?? this.generateDescription();
+  setDescription(description) {
+    if (description === undefined) {
+      this.product.description = this.generateDescription();
+    } else {
+      this.product.description = description;
+    }
   }
 
-  setBody(body = null) {
-    this.product.body = body ?? this.generateBody();
+  setBody(body) {
+    if (body === undefined) {
+      this.product.body = this.generateBody();
+    } else {
+      this.product.body = body;
+    }
   }
 
   setTagList(tags = 0) {

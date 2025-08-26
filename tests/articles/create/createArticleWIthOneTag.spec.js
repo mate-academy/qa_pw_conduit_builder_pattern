@@ -5,7 +5,7 @@ test(`Create article with one tag`, async ({
   articlesApi,
   testDataDirector,
 }) => {
-  const article = testDataDirector.article.buildArticle(1);
+  const article = testDataDirector.article.buildWithOneTag(1);
   const response = await articlesApi.createArticle(
     article,
     registeredUser.token,

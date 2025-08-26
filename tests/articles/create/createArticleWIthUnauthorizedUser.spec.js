@@ -4,7 +4,7 @@ test(`Create article with unautorized user`, async ({
   articlesApi,
   testDataDirector,
 }) => {
-  const articleWithoutTags = testDataDirector.article.buildArticle();
+  const articleWithoutTags = testDataDirector.article.buildWithOneTag();
   const token = '';
   const response = await articlesApi.createArticle(articleWithoutTags, token);
 

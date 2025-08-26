@@ -6,7 +6,7 @@ test('Register user with empty password', async ({
   testDataDirector,
 }) => {
   const invalidUser = testDataDirector.user.buildWithEmptyPassword();
-  const response = await usersApi.registerNewUser({ invalidUser });
+  const response = await usersApi.registerNewUser(invalidUser);
 
   await usersApi.assertUnprocessableEntityResponseCode(response);
   await usersApi.assertErrorMessageInResponseBody(

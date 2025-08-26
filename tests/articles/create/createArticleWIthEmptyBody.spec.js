@@ -5,8 +5,7 @@ test(`Create article with empty body`, async ({
   articlesApi,
   testDataDirector,
 }) => {
-  const article = testDataDirector.article.buildArticle();
-  article['body'] = null;
+  const article = testDataDirector.article.buildWithEmptyBody();
 
   const response = await articlesApi.createArticle(
     article,
