@@ -5,8 +5,8 @@ test('Register user with empty email', async ({
   usersApi,
   testDataDirector,
 }) => {
-  const user = testDataDirector.user.buildWithEmptyEmail();
-  const response = await usersApi.registerNewUser(user);
+  const invalidUser = testDataDirector.user.buildWithEmptyEmail();
+  const response = await usersApi.registerNewUser(invalidUser);
 
   await usersApi.assertUnprocessableEntityResponseCode(response);
   await usersApi.assertErrorMessageInResponseBody(
