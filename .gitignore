@@ -6,3 +6,4 @@ node_modules/
 ./vscode
 /allure-results/
 .nvmrc
+.idea

@@ -1,24 +1,30 @@
 import { test as base } from '@playwright/test';
 import { ArticlesApi } from '../../src/api/endpoints/ArticlesApi';
-import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
+import { TestDataDirector } from '../../src/common/testData/builders/TestDataDirector';
+
 
 export const test = base.extend<{
   articlesApi;
   articleWithoutTags;
   articleWithOneTag;
+  articleDataDirector;
 }>({
+  articleDataDirector: async ({}, use) => {
+    const director = new TestDataDirector().article;
+
+    await use(director);
+  },
   articlesApi: async ({ request }, use) => {
     const client = new ArticlesApi(request);
 
     await use(client);
   },
-  articleWithoutTags: async ({}, use) => {
-    const article = generateNewArticleData();
-
+  articleWithoutTags: async ({ articleDataDirector }, use) => {
+    const article = articleDataDirector.buildArticleWithoutTag();
     await use(article);
   },
-  articleWithOneTag: async ({}, use) => {
-    const article = generateNewArticleData(1);
+  articleWithOneTag: async ({articleDataDirector}, use) => {
+    const article = articleDataDirector.buildFullArticleWithOneTag();
 
     await use(article);
   },
