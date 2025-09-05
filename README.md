@@ -38,7 +38,7 @@ Part1:
 
 Part2:
 
-5. Create `ArticleBuilder` and `ArticleDirector` classes in the new folder `./src/common/testData/builders/artcile`.
+5. Create `ArticleBuilder` and `ArticleDirector` classes in the new folder `./src/common/testData/builders/article`.
 6. Initialize  `ArticleDirector` instance within the `TestDataDirector` class.
 7. Update the articles tests to use builder & director for creating article objects.
 - `tests/articles/create/createArticleWIthEmptyBody.spec.js`;

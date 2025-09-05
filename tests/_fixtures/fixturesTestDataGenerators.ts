@@ -1,11 +1,26 @@
 import { test as base } from '@playwright/test';
 import { TestDataDirector } from '../../src/common/testData/builders/TestDataDirector';
 
+// Type definitions for fixtures
+interface User {
+  username: string;
+  email: string;
+  password: string;
+}
+
+interface Profile {
+  username: string;
+  bio?: string;
+  image?: string;
+  following?: boolean;
+}
+
 export const test = base.extend<{
-  testDataDirector;
-  user;
-  users;
-  newUserProfile;
+  testDataDirector: TestDataDirector;
+  user: User;
+  users: User[];
+  newUserProfile: Profile;
+  usersNumber: number;
 }>({
   testDataDirector: async ({}, use) => {
     const director = new TestDataDirector();
@@ -27,8 +42,11 @@ export const test = base.extend<{
     await use(users);
   },
   newUserProfile: async ({ testDataDirector }, use) => {
-    const profile = testDataDirector.userProfile.buildNewUserProfile();
+    const profile = testDataDirector.userProfile.buildNewProfile('token');
 
     await use(profile);
+  },
+  usersNumber: async ({}, use) => {
+    await use(5); // Default number of users
   },
 });
