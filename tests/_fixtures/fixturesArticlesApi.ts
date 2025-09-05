@@ -28,4 +28,15 @@ export const test = base.extend<{
 
     await use(article);
   },
+
+  articleWithoutBody: async ({articleDataDirector}, use) => {
+    const article = articleDataDirector.buildArticleWithEmptyBody();
+
+    await use(article);
+  },
+  articleWithoutTitle: async ({articleDataDirector}, use) => {
+    const article = articleDataDirector.buildArticleWithEmptyTitle();
+
+    await use(article);
+  },
 });

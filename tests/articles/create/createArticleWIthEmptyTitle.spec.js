@@ -3,10 +3,9 @@ import { test } from '../../_fixtures/fixtures';
 test(`Create article with empty title`, async ({
   registeredUser,
   articlesApi,
-  articleWithoutTags,
+  articleWithoutTitle,
 }) => {
-  const article = articleWithoutTags;
-  article['title'] = null;
+  const article = await articleWithoutTitle;
 
   const response = await articlesApi.createArticle(
     article,
