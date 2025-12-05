@@ -5,52 +5,42 @@ export class ArticleDirector {
     this.builder = new ArticleBuilder();
   }
 
-  buildDefault(tagsNumber = 0) {
-    this.builder.reset()
-      .setTitle()
-      .setDescription()
-      .setText()
-      .setTagsCount(tagsNumber);
-    return this.builder.getProduct();
-  }
-
-  buildWithEmptyBody() {
-    this.builder.reset()
-      .setTitle()
-      .setDescription()
-      .setText('')
-      .setTags([]);
-    return this.builder.getProduct();
-  }
-
-  buildWithEmptyTitle() {
-    this.builder.reset()
-      .setTitle('')
-      .setDescription()
-      .setText()
-      .setTags([]);
-    return this.builder.getProduct();
-  }
-
   buildWithEmptyTags() {
-    this.builder.reset()
+    return this.builder
+      .reset()
       .setTitle()
       .setDescription()
-      .setText()
-      .setTags([]);
-    return this.builder.getProduct();
+      .setBody()
+      .setTagList([])          // ✔ matches new builder
+      .getProduct();
   }
 
   buildWithOneTag() {
-    this.builder.reset()
+    return this.builder
+      .reset()
       .setTitle()
       .setDescription()
-      .setText()
-      .setTagsCount(1);
-    return this.builder.getProduct();
+      .setBody()
+      .setTagListCount(1)      // ✔ matches new builder
+      .getProduct();
   }
 
-  buildWithTags(tagsNumber) {
-    return this.buildDefault(tagsNumber);
+  buildWithTagsCount(count = 2) {
+    return this.builder
+      .reset()
+      .setTitle()
+      .setDescription()
+      .setBody()
+      .setTagListCount(count)  // ✔ matches new builder
+      .getProduct();
+  }
+
+  buildMinimal() {
+    return this.builder
+      .reset()
+      .setTitle()
+      .setDescription()
+      .setBody()
+      .getProduct();
   }
 }
