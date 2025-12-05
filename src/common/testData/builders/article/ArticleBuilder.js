@@ -6,7 +6,12 @@ export class ArticleBuilder {
   }
 
   reset() {
-    this._article = { title: '', description: '', text: '', tags: [] };
+    this._article = {
+      title: '',
+      description: '',
+      body: '',
+      tagList: []
+    };
     return this;
   }
 
@@ -20,19 +25,19 @@ export class ArticleBuilder {
     return this;
   }
 
-  setText(value = faker.lorem.sentences(2)) {
-    this._article.text = value;
+  setBody(value = faker.lorem.sentences(2)) {
+    this._article.body = value;
     return this;
   }
 
-  setTags(tags = []) {
-    this._article.tags = Array.isArray(tags) ? tags : [];
+  setTagList(tags = []) {
+    this._article.tagList = Array.isArray(tags) ? tags : [];
     return this;
   }
 
-  setTagsCount(count = 0) {
+  setTagListCount(count = 0) {
     const n = Math.max(0, Number(count) || 0);
-    this._article.tags = Array.from({ length: n }, () => faker.lorem.word());
+    this._article.tagList = Array.from({ length: n }, () => faker.lorem.word());
     return this;
   }
 

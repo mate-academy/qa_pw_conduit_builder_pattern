@@ -1,6 +1,6 @@
 import { UserDirector } from './user/UserDirector';
 import { ProfileDirector } from './profile/ProfileDirector';
-import { ArticleDirector } from './artcile/ArticleDirector';
+import { ArticleDirector } from './article/ArticleDirector';
 
 
 export class TestDataDirector {

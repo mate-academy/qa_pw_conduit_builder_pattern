@@ -27,9 +27,9 @@ export const test = base.extend<{
     await use(article);
   },
 
-  // Exactly one tag
+  // One tag (fix)
   articleWithOneTag: async ({}, use) => {
-    const article = testDataDirector.article.buildWithTagsCount(1);
+    const article = testDataDirector.article.buildWithOneTag();
     await use(article);
   },
 });
