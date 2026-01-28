@@ -3,9 +3,9 @@ import { test } from '../../_fixtures/fixtures';
 test(`Create article with one tag`, async ({
   registeredUser,
   articlesApi,
-  articleWithOneTag,
+  testDataDirector,
 }) => {
-  const article = articleWithOneTag;
+  const article = testDataDirector.article.buildArticleWithOneTag();
   const response = await articlesApi.createArticle(
     article,
     registeredUser.token,
