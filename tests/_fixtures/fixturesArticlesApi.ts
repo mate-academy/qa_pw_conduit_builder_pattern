@@ -11,7 +11,7 @@ export const test = base.extend<{
     await use(client);
   },
   articleWithoutTags: async ({ testDataDirector }, use) => {
-    const article = testDataDirector.article.buildArticle();
+    const article = testDataDirector.article.buildArticle(0);
     await use(article);
   },
   articleWithOneTag: async ({ testDataDirector }, use) => {
