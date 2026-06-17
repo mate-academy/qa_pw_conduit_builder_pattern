@@ -3,10 +3,12 @@ import { test } from '../../_fixtures/fixtures';
 test.use({ usersNumber: 2 });
 
 let slug;
+let article;
 
-test.beforeEach(async ({ registeredUsers, articlesApi, articleWithOneTag }) => {
+test.beforeEach(async ({ registeredUsers, articlesApi, testDataDirector }) => {
+  article = testDataDirector.article.buildWithOneTag();
   const response = await articlesApi.createArticle(
-    articleWithOneTag,
+    article,
     registeredUsers[0].token,
   );
 
@@ -17,10 +19,9 @@ test.beforeEach(async ({ registeredUsers, articlesApi, articleWithOneTag }) => {
 
 test(`Get an article created by user1 by authorized user 2`, async ({
   articlesApi,
-  articleWithOneTag,
   registeredUsers,
+  testDataDirector,
 }) => {
-  const article = articleWithOneTag;
   const response = await articlesApi.getArticleBySlug(
     slug,
     registeredUsers[1].token,
