@@ -2,10 +2,12 @@ import { test } from '../../_fixtures/fixtures';
 
 test(`Create article with unautorized user`, async ({
   articlesApi,
-  articleWithoutTags,
+  testDataDirector,
 }) => {
-  const token = '';
-  const response = await articlesApi.createArticle(articleWithoutTags, token);
+  const token = testDataDirector.user.buildUnauthorizedUserToken();
+  const response = await articlesApi.createArticle(testDataDirector.article.buildWithEmptyTags(
+    'Real Title Here', 'Real Description Here', 'Real Body Here'
+  ), token);
 
   await articlesApi.assertUnauthorizedResponseCode(response);
 });
