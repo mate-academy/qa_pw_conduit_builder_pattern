@@ -4,14 +4,14 @@ test(`Create article with empty body`, async ({
   registeredUser,
   articlesApi,
   articleWithoutTags,
+  testDataDirector,
 }) => {
-  const article = articleWithoutTags;
-  article['body'] = null;
-
+  const article = testDataDirector.article.buildWithEmptyBody(articleWithoutTags.title, articleWithoutTags.description);
   const response = await articlesApi.createArticle(
     article,
     registeredUser.token,
   );
+  console.log('Response:', response.status(), response.body());
 
   await articlesApi.assertUnprocessableEntityResponseCode(response);
 });

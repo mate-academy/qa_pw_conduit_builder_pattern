@@ -4,9 +4,9 @@ test(`Create article with empty title`, async ({
   registeredUser,
   articlesApi,
   articleWithoutTags,
+  testDataDirector,
 }) => {
-  const article = articleWithoutTags;
-  article['title'] = null;
+  const article = testDataDirector.article.buildWithEmptyTitle(articleWithoutTags.description, articleWithoutTags.body);
 
   const response = await articlesApi.createArticle(
     article,

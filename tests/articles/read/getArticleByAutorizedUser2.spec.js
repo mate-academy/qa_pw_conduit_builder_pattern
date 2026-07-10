@@ -4,9 +4,9 @@ test.use({ usersNumber: 2 });
 
 let slug;
 
-test.beforeEach(async ({ registeredUsers, articlesApi, articleWithOneTag }) => {
+test.beforeEach(async ({ registeredUsers, articlesApi, testDataDirector }) => {
   const response = await articlesApi.createArticle(
-    articleWithOneTag,
+    testDataDirector.article.buildWithOneTag(),
     registeredUsers[0].token,
   );
 
@@ -19,8 +19,9 @@ test(`Get an article created by user1 by authorized user 2`, async ({
   articlesApi,
   articleWithOneTag,
   registeredUsers,
+  testDataDirector
 }) => {
-  const article = articleWithOneTag;
+  const article = testDataDirector.article.buildWithOneTag();
   const response = await articlesApi.getArticleBySlug(
     slug,
     registeredUsers[1].token,
