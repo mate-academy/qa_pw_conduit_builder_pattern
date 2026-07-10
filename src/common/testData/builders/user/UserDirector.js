@@ -9,8 +9,11 @@ export class UserDirector {
   }
 
   buildWithEmptyPassword(username, email) {
+    this.builder.reset();
     this.username = username;
     this.email = email;
+    this.builder.setUsername(username);
+    this.builder.setEmail(email);
     this.builder.setPassword('');
 
 
@@ -55,7 +58,7 @@ export class UserDirector {
     return newUser;
   }
 
-   buildUnauthorizedUserToken(title, description) {
+   buildUnauthorizedUserToken() {
 
      return null;
 

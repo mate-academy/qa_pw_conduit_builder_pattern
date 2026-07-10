@@ -6,10 +6,25 @@ export class ArticleDirector {
     
   }
 
+
   buildWithEmptyBody(title, description) {
-    this.builder.title = title;
-    this.builder.description = description;
+    this.builder.reset();
+
+    this.builder.setTitle(title);
+    this.builder.setDescription(description);
     this.builder.setBody('');
+
+    const newArticle = this.builder.getProduct();
+
+    return newArticle;
+  }
+
+  buildWithEmptyDescription(title, description, body) {
+    this.builder.reset();
+
+    this.builder.setTitle(title);
+    this.builder.setDescription(description);
+    this.builder.setBody(body);
 
     const newArticle = this.builder.getProduct();
 
@@ -17,10 +32,11 @@ export class ArticleDirector {
   
   }
 
-  buildWithEmptyTitle(title, description) {
-    this.builder.title = '';
-    this.builder.description = description;
+  buildWithEmptyTitle( description) {
+    this.builder.reset();
+
     this.builder.setTitle('');
+    this.builder.setDescription(description);
 
     const newArticle = this.builder.getProduct();
 
@@ -28,9 +44,13 @@ export class ArticleDirector {
   }
     
 
-  buildWithEmptyTags(title, description) {
-    this.builder.title = title;
-    this.builder.description = description;
+  buildWithEmptyTags(title, description, body) {
+    this.builder.reset();
+
+    this.builder.setTitle(title);
+    this.builder.setDescription(description);
+    this.builder.setBody(body);
+
     this.builder.setTagList([]);
 
     const newArticle = this.builder.getProduct();
@@ -38,10 +58,14 @@ export class ArticleDirector {
     return newArticle;
   }
 
-  buildWithOneTag(title = 'Default Title', description = 'Default Description', tag = 'tag') {
-    this.builder.title = title;
-    this.builder.description = description;
+  buildWithOneTag(title = 'Default Title', description = 'Default Description', body = 'Default Body', tag = 'tag') {
+    this.builder.reset();
+
+    this.builder.setTitle(title);
+    this.builder.setDescription(description);
     this.builder.setTagList([tag]);
+    this.builder.setBody(body);
+
 
     const newArticle = this.builder.getProduct();
 
@@ -49,8 +73,10 @@ export class ArticleDirector {
   }
 
   buildWithUnauthorizedUser(title, description) {
-    this.builder.title = title;
-    this.builder.description = description;
+    this.builder.reset();
+
+    this.builder.setTitle(title);
+    this.builder.setDescription(description);
     this.builder.setUnauthorizedUser();
 
     const newArticle = this.builder.getProduct();
