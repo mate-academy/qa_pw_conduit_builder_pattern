@@ -17,7 +17,6 @@ test.beforeEach(async ({ registeredUsers, articlesApi, testDataDirector }) => {
 
 test(`Get an article created by user1 by authorized user 2`, async ({
   articlesApi,
-  articleWithOneTag,
   registeredUsers,
   testDataDirector
 }) => {

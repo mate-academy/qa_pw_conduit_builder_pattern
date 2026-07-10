@@ -3,10 +3,9 @@ import { test } from '../../_fixtures/fixtures';
 test(`Create article with empty tags`, async ({
   registeredUser,
   articlesApi,
-  articleWithoutTags,
   testDataDirector,
 }) => {
-  const article = testDataDirector.article.buildWithEmptyTags(articleWithoutTags.title, articleWithoutTags.description, articleWithoutTags.body);
+  const article = testDataDirector.article.buildWithEmptyTags('title', 'description');
   const response = await articlesApi.createArticle(
     article,
     registeredUser.token,
