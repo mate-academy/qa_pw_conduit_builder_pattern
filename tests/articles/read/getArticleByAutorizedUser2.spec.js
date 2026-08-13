@@ -5,9 +5,7 @@ test.use({ usersNumber: 2 });
 let slug;
 let article;
 
-test.beforeEach(async ({ registeredUsers, articlesApi, testDataDirector }) => {
-  article = testDataDirector.article.buildWithOneTag();
-
+test.beforeEach(async ({ registeredUsers, articlesApi, article }) => {
   const response = await articlesApi.createArticle(
     article,
     registeredUsers[0].token,

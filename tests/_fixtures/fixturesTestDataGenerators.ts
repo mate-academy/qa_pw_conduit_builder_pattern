@@ -33,7 +33,7 @@ export const test = base.extend<{
     await use(profile);
   },
   article: async ({ testDataDirector }, use) => {
-    const article = testDataDirector.article.buidlArticle();
+    const article = testDataDirector.article.buildWithOneTag();
 
     await use(article);
   }
