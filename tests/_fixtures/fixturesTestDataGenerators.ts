@@ -3,10 +3,10 @@ import { TestDataDirector } from '../../src/common/testData/builders/TestDataDir
 
 export const test = base.extend<{
   testDataDirector;
+  article;
   user;
   users;
   newUserProfile;
-  article;
 }>({
   testDataDirector: async ({}, use) => {
     const director = new TestDataDirector();
