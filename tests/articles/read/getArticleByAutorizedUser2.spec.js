@@ -3,7 +3,6 @@ import { test } from '../../_fixtures/fixtures';
 test.use({ usersNumber: 2 });
 
 let slug;
-let article;
 
 test.beforeEach(async ({ registeredUsers, articlesApi, article }) => {
   const response = await articlesApi.createArticle(
@@ -19,6 +18,7 @@ test.beforeEach(async ({ registeredUsers, articlesApi, article }) => {
 test(`Get an article created by user1 by authorized user 2`, async ({
   articlesApi,
   registeredUsers,
+  article,
 }) => {
   const response = await articlesApi.getArticleBySlug(
     slug,
