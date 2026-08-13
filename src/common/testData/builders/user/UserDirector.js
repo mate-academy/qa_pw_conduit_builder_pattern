@@ -12,9 +12,7 @@ export class UserDirector {
     this.builder.setEmail();
     this.builder.setPassword();
 
-    const user = this.builder.getProduct();
-
-    return user;
+    return this.builder.getProduct();
   }
 
   buildWithEmptyEmail() {
@@ -24,8 +22,25 @@ export class UserDirector {
     this.builder.setEmail('');
     this.builder.setPassword();
 
-    const newUser = this.builder.getProduct();
+    return this.builder.getProduct();
+  }
 
-    return newUser;
+  buildWithEmptyPassword() {
+    this.builder.reset();
+
+    this.builder.setUsername();
+    this.builder.setEmail();
+    this.builder.setPassword('');
+
+    return this.builder.getProduct();
+  }
+  buildWithEmptyUsername() {
+    this.builder.reset();
+
+    this.builder.setUsername('');
+    this.builder.setEmail();
+    this.builder.setPassword();
+
+    return this.builder.getProduct();
   }
 }

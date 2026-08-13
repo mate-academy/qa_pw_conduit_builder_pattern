@@ -6,6 +6,7 @@ export const test = base.extend<{
   user;
   users;
   newUserProfile;
+  article;
 }>({
   testDataDirector: async ({}, use) => {
     const director = new TestDataDirector();
@@ -31,4 +32,9 @@ export const test = base.extend<{
 
     await use(profile);
   },
+  article: async ({ testDataDirector }, use) => {
+    const article = testDataDirector.article.buidlArticle();
+
+    await use(article);
+  }
 });
