@@ -52,6 +52,14 @@ Part2:
 9. Run all the tests and make sure they pass. Use npm scripts for executing tests against `stage` Conduit env. 
 
 
+## Review Response
+
+1. **buildWithEmptyPassword() and buildWithEmptyUsername()** — Both methods are already implemented in `UserDirector.js` (lines 28-45). The tests `registerUserWithEmptyPassword.spec.js` and `registerUserWithEmptyUsername.spec.js` are also updated and use `testDataDirector.user.buildWithEmptyPassword()` / `testDataDirector.user.buildWithEmptyUsername()` respectively. Please re-check the latest version of these files.
+
+2. **Typo `buidlArticle()`** — Fixed. Changed to `buildWithOneTag()` in the article fixture as intended.
+
+3. **generateNewArticleData.js** — Confirmed deleted, no remaining imports reference it.
+
 ## Task Reporting
 
 1. Add and commit all your updates.

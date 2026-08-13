@@ -3,6 +3,7 @@ import { TestDataDirector } from '../../src/common/testData/builders/TestDataDir
 
 export const test = base.extend<{
   testDataDirector;
+  article;
   user;
   users;
   newUserProfile;
@@ -31,4 +32,9 @@ export const test = base.extend<{
 
     await use(profile);
   },
+  article: async ({ testDataDirector }, use) => {
+    const article = testDataDirector.article.buildWithOneTag();
+
+    await use(article);
+  }
 });
