@@ -46,7 +46,7 @@ export class ArticlesApi extends BaseAPI {
 
   async assertArticleTitleHasCorrectValue(response, text) {
     await this.step(
-      `Assert response body has correct artcile title`,
+      `Assert response body has correct article title`,
       async () => {
         const body = await this.parseBody(response);
 

@@ -6,6 +6,8 @@ export const test = base.extend<{
   user;
   users;
   newUserProfile;
+  articleWithoutTags;
+  articleWithOneTag;
 }>({
   testDataDirector: async ({}, use) => {
     const director = new TestDataDirector();
@@ -30,5 +32,15 @@ export const test = base.extend<{
     const profile = testDataDirector.userProfile.buildNewUserProfile();
 
     await use(profile);
+  },
+  articleWithoutTags: async ({ testDataDirector }, use) => {
+    const article = testDataDirector.article.buildArticleWithoutTags();
+
+    await use(article);
+  },
+  articleWithOneTag: async ({ testDataDirector }, use) => {
+    const article = testDataDirector.article.buildArticleWithOneTag();
+
+    await use(article);
   },
 });
