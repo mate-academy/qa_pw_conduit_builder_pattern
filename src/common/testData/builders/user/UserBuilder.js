@@ -41,7 +41,7 @@ export class UserBuilder extends BaseBuilder {
 
   generateUsername() {
     const username = `${this.generateFirstName()}_${this.generateLastName()}`
-      .replaceAll(`'`)
+      .replaceAll(`'`, ``)
       .toLowerCase();
 
     return username;
