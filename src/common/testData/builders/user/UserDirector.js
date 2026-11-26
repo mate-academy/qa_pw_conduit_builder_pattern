@@ -17,12 +17,36 @@ export class UserDirector {
     return user;
   }
 
+  buildWithEmptyUsername() {
+    this.builder.reset();
+
+    this.builder.setUsername('');
+    this.builder.setEmail();
+    this.builder.setPassword();
+
+    const newUser = this.builder.getProduct();
+
+    return newUser;
+  }
+
   buildWithEmptyEmail() {
     this.builder.reset();
 
     this.builder.setUsername();
     this.builder.setEmail('');
     this.builder.setPassword();
+
+    const newUser = this.builder.getProduct();
+
+    return newUser;
+  }
+
+  buildWithEmptyPassword() {
+    this.builder.reset();
+
+    this.builder.setUsername();
+    this.builder.setEmail();
+    this.builder.setPassword('');
 
     const newUser = this.builder.getProduct();
 

@@ -41,11 +41,11 @@ Part2:
 5. Create `ArticleBuilder` and `ArticleDirector` classes in the new folder `./src/common/testData/builders/artcile`.
 6. Initialize  `ArticleDirector` instance within the `TestDataDirector` class.
 7. Update the articles tests to use builder & director for creating article objects.
-- `tests/articles/create/createArticleWIthEmptyBody.spec.js`;
-- `tests/articles/create/createArticleWIthEmptyTags.spec.js`;
-- `tests/articles/create/createArticleWIthEmptyTitle.spec.js`;
-- `tests/articles/create/createArticleWIthOneTag.spec.js`;
-- `tests/articles/create/createArticleWIthUnauthorizedUser.spec.js`;
+- `tests/articles/create/createArticleWIthEmptyBody.spec.js`; + 
+- `tests/articles/create/createArticleWIthEmptyTags.spec.js`; + 
+- `tests/articles/create/createArticleWIthEmptyTitle.spec.js`; +
+- `tests/articles/create/createArticleWIthOneTag.spec.js`; + 
+- `tests/articles/create/createArticleWIthUnauthorizedUser.spec.js`; +
 - `tests/articles/read/getArticleByAutorizedUser2.spec.js`;
 - `tests/articles/read/getArticleByUnautorizedUser.spec.js`;
 8. Remove method `src/common/testData/generateNewArticleData.js` from project.
