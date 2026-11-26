@@ -1,11 +1,14 @@
-import { test as base } from '@playwright/test';
 import { ArticlesApi } from '../../src/api/endpoints/ArticlesApi';
+import { TestDataDirector } from '../../src/common/testData/builders/TestDataDirector';
+import { test as base } from './fixturesTestDataGenerators';
 
-export const test = base.extend<{
-  articlesApi;
-  articleWithoutTags;
-  articleWithOneTag;
-}>({
+type ArticlesFixtures = {
+  articlesApi: ArticlesApi;
+  articleWithoutTags: ReturnType<TestDataDirector['article']['buildArticle']>;
+  articleWithOneTag: ReturnType<TestDataDirector['article']['buildWithOneTag']>;
+};
+
+export const test = base.extend<ArticlesFixtures>({
   articlesApi: async ({ request }, use) => {
     const client = new ArticlesApi(request);
 

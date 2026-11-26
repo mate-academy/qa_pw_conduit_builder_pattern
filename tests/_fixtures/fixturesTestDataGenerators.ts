@@ -1,12 +1,18 @@
 import { test as base } from '@playwright/test';
 import { TestDataDirector } from '../../src/common/testData/builders/TestDataDirector';
 
-export const test = base.extend<{
-  testDataDirector;
-  user;
-  users;
-  newUserProfile;
-}>({
+type TestDataFixtures = {
+  testDataDirector: TestDataDirector;
+  user: ReturnType<TestDataDirector['user']['buildUser']>;
+  users: Array<ReturnType<TestDataDirector['user']['buildUser']>>;
+  usersNumber: number;
+  newUserProfile: ReturnType<
+    TestDataDirector['userProfile']['buildNewUserProfile']
+  >;
+};
+
+export const test = base.extend<TestDataFixtures>({
+  usersNumber: [1, { option: true }],
   testDataDirector: async ({}, use) => {
     const director = new TestDataDirector();
 
