@@ -1,10 +1,13 @@
 import { test } from '../../_fixtures/fixtures';
 
 let slug;
+let article;
 
-test.beforeEach(async ({ registeredUser, articlesApi, articleWithOneTag }) => {
+test.beforeEach(async ({ registeredUser, articlesApi, testDataDirector }) => {
+  article = testDataDirector.article.buildWithOneTag();
+
   const response = await articlesApi.createArticle(
-    articleWithOneTag,
+    article,
     registeredUser.token,
   );
 
@@ -13,11 +16,7 @@ test.beforeEach(async ({ registeredUser, articlesApi, articleWithOneTag }) => {
   slug = await articlesApi.parseSlugFromResponse(response);
 });
 
-test(`Get an article by unauthorized user`, async ({
-  articlesApi,
-  articleWithOneTag,
-}) => {
-  const article = articleWithOneTag;
+test(`Get an article by unauthorized user`, async ({ articlesApi }) => {
   const response = await articlesApi.getArticleBySlug(slug, '');
 
   await articlesApi.assertSuccessResponseCode(response);
