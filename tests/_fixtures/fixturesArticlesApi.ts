@@ -1,6 +1,5 @@
 import { test as base } from '@playwright/test';
 import { ArticlesApi } from '../../src/api/endpoints/ArticlesApi';
-import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 
 export const test = base.extend<{
   articlesApi;
@@ -12,14 +11,10 @@ export const test = base.extend<{
 
     await use(client);
   },
-  articleWithoutTags: async ({}, use) => {
-    const article = generateNewArticleData();
-
-    await use(article);
+  articleWithoutTags: async ({ testDataDirector }, use) => {
+    await use(testDataDirector.article.buildArticle());
   },
-  articleWithOneTag: async ({}, use) => {
-    const article = generateNewArticleData(1);
-
-    await use(article);
+  articleWithOneTag: async ({ testDataDirector }, use) => {
+    await use(testDataDirector.article.buildWithOneTag());
   },
 });

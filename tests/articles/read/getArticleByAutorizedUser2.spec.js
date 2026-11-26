@@ -3,10 +3,13 @@ import { test } from '../../_fixtures/fixtures';
 test.use({ usersNumber: 2 });
 
 let slug;
+let createdArticle;
 
-test.beforeEach(async ({ registeredUsers, articlesApi, articleWithOneTag }) => {
+test.beforeEach(async ({ registeredUsers, articlesApi, testDataDirector }) => {
+  createdArticle = testDataDirector.article.buildWithOneTag();
+
   const response = await articlesApi.createArticle(
-    articleWithOneTag,
+    createdArticle,
     registeredUsers[0].token,
   );
 
@@ -17,10 +20,8 @@ test.beforeEach(async ({ registeredUsers, articlesApi, articleWithOneTag }) => {
 
 test(`Get an article created by user1 by authorized user 2`, async ({
   articlesApi,
-  articleWithOneTag,
   registeredUsers,
 }) => {
-  const article = articleWithOneTag;
   const response = await articlesApi.getArticleBySlug(
     slug,
     registeredUsers[1].token,
@@ -28,11 +29,20 @@ test(`Get an article created by user1 by authorized user 2`, async ({
 
   await articlesApi.assertSuccessResponseCode(response);
   await articlesApi.assertResponseBodyContainsSlug(response);
-  await articlesApi.assertArticleTitleHasCorrectValue(response, article.title);
+  await articlesApi.assertArticleTitleHasCorrectValue(
+    response,
+    createdArticle.title,
+  );
   await articlesApi.assertArticleDescriptionHasCorrectValue(
     response,
-    article.description,
+    createdArticle.description,
   );
-  await articlesApi.assertArticleBodyHasCorrectValue(response, article.body);
-  await articlesApi.assertArticleTagsHasCorrectValue(response, article.tagList);
+  await articlesApi.assertArticleBodyHasCorrectValue(
+    response,
+    createdArticle.body,
+  );
+  await articlesApi.assertArticleTagsHasCorrectValue(
+    response,
+    createdArticle.tagList,
+  );
 });
